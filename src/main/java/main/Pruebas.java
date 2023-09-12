@@ -23,7 +23,7 @@ public class Pruebas {
 		if(u == null){
 			System.out.println("Usuario no existe ");
 		}else{
-			System.out.println("Bienvenido " + u.getNomUsua());
+			System.out.println("Bienvenido " + u.getNomUsua() + " "+u.getApeUsua());
 			System.out.println("Tus datos son: " + u);
 		}
 		System.out.println("---------------------------------");
