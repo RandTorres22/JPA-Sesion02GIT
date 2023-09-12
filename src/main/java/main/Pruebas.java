@@ -16,14 +16,33 @@ public class Pruebas {
 		EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("JPA_clase01x");
 		EntityManager em = fabrica.createEntityManager();
 		
-		Query query = em.createNativeQuery("{call findAll_usuarios()}", TbUsuario.class);
+		Query query = em.createNativeQuery("{call usp_validaAcceso(?,?)}", TbUsuario.class);
+		query.setParameter(1, "U001@gmail.com");
+		query.setParameter(2, "10001");
+		TbUsuario u =(TbUsuario) query.getSingleResult();
+		if(u == null){
+			System.out.println("Usuario no existe ");
+		}else{
+			System.out.println("Bienvenido " + u.getNomUsua());
+			System.out.println("Tus datos son: " + u);
+		}
+		System.out.println("---------------------------------");
+		
+		
+	}
+		
+		
+		
+		
+		/*Query query = em.createNativeQuery("{call findAll_usuarios()}", TbUsuario.class);
 		
 		
 		List<TbUsuario> lstUsuarios = query.getResultList();
 		System.out.println("==================================================================================");
 		
-		/*Mostrar cantidad de usuarios*/
-		System.out.println("Nro de Usuarios:" + lstUsuarios.size());
+		//Mostrar cantidad de usuarios
+		System.out.println("Nro de Usuarios:" + lstUsuarios.size());*/
+		
 	}
 
-}
+
